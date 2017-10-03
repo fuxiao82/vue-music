@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+map:
+<input type="text">
+<script>
+  //    console.log(window.parent.getAttribute('attr-test'))
+  // 获取上一级的window对象，如果还是iframe则是该iframe的window对象
+  //    console.log(window.top.getAttribute('attr-test'))
+  // 获取最顶级容器的window对象，即，就是你打开页面的文档
+  //    console.log(window.self.getAttribute('attr-test'))
+  // 返回自身window的引用。可以理解 window===window.self(脑残)
+  //    console.log(window.frames['ifr1'].getAttribute('attr-test'))
+  debugger
+  console.log(window.parent['attr-test'])
+</script>
+</body>
+</html>
