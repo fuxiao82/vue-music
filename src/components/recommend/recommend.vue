@@ -1,50 +1,52 @@
 <template>
   <div class="recommend" ref="recommend">
     <div class="recommend-content">
-      <div class="slider-wrapper"></div>
-      <div class="recommend-list">
-        <slider :data='recommends'>
+      <div class="slider-wrapper" v-if="recommends.length">
+        <slider>
           <div v-for="item in recommends">
             <a :href="item.linkUrl" class="href">
-              <img :src="item.picUrl" alt="">
+              <img :src="item.picUrl" alt="" class="icon">
             </a>
           </div>
         </slider>
+      </div>
+      <div class="recommend-list">
+        <div class="list-title"></div>
+        <ul>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-import { getRecommend } from 'api/recommend'
-import { ERROR_CODE } from 'api/config'
-import slider from 'base/slider/slider'
+  import {getRecommend} from 'api/recommend'
+  import {ERROR_CODE} from 'api/config'
+  import slider from 'base/slider/slider'
 
-export default {
-  name: 'recommend',
-  components: {
-    slider
-  },
-  data() {
-    return {
-      recommends: []
-    }
-  },
-  created() {
-    this._getRecommend()
-  },
-  methods: {
-    _getRecommend() {
-      getRecommend().then((res) => {
-        if (res.code === ERROR_CODE) {
-          this.recommends = res.data.slider
-
-          console.log(this.recommends)
-        }
-      })
+  export default {
+    name: 'recommend',
+    components: {
+      slider
+    },
+    data() {
+      return {
+        recommends: []
+      }
+    },
+    created() {
+      this._getRecommend()
+    },
+    methods: {
+      _getRecommend() {
+        getRecommend().then((res) => {
+          if (res.code === ERROR_CODE) {
+            this.recommends = res.data.slider
+          }
+        })
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">

@@ -1,12 +1,11 @@
 import orginJSONP from 'jsonp'
 
-export default function (url, data, option) {
+export default function(url, data, option) {
   data = url.indexOf('?') === -1 ? '?' + param(data) : param(data)
   url += data
 
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     orginJSONP(url, option, (err, data) => {
-      console.log(true)
       if (!err) {
         resolve(data)
       } else {
@@ -16,7 +15,7 @@ export default function (url, data, option) {
   })
 }
 
-function param (data) {
+function param(data) {
   let tempStr = ''
 
   for (let key in data) {
